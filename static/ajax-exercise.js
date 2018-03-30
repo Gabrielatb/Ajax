@@ -46,8 +46,13 @@ $("#weather-form").on('submit', getWeather);
 
 // PART 3: ORDER MELONS
 function showMelons(results) {
-    $("#order-status").html(results);
+    if (results['code'] === 'ERROR'){
+        $("#order-status").addClass('order-error');
+        $("#order-status").html(results['msg']); 
 
+    } else{
+    $("#order-status").html(results['msg']);
+    }
 }
 
 function orderMelons(evt) {
